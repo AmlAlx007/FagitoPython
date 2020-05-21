@@ -13,5 +13,3 @@ class SignUp(db.Model):
     def find_all(cls):
         return cls.query.all()
 
-    @classmethod
-    def
