@@ -1,19 +1,17 @@
 from flask import request
+from database import db
+from app import app
 from sqlalchemy import create_engine
 from sqlalchemy.engine.url import URL
+from app.models.SignUp import SignUp
 
 
 def signup():
+    print("hello")
     request_data = request.get_json()
-    myDB = URL(drivername='mysql', username='admin', password='fAgitod3v', host='fagitodev.cw0t204dkdrj.eu-west-1.rds.amazonaws.com', database='fagito')
-    engine = create_engine(name_or_url = myDB)
-    connection = engine.connect()
-
-    query = 'SELECT * FROM sign_up'
-
-    result = connection.execute(query)
+    result = SignUp.find_all()
     for val in result:
-        print(val)
+        print(val.email)
     return "hello"
 
 

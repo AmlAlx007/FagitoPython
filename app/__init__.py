@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from database import db
 
 
 def initialize_extensions():
@@ -17,13 +17,10 @@ def create_app(config_filename=None):
     application.config.from_pyfile(config_filename)
     initialize_extensions()
     register_blueprints(application)
+    db.init_app(application)
     return application
-
-
-print(os.path.abspath(os.path.dirname(__file__)))
 
 
 config_filename = os.path.abspath(os.path.dirname(__file__)) + "/../instance/development.cfg"
 app = Flask(__name__)
 app.config.from_pyfile(config_filename)
-db = SQLAlchemy(app)
