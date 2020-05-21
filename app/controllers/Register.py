@@ -1,5 +1,4 @@
 from flask import request
-from app import db
 from sqlalchemy import create_engine
 from sqlalchemy.engine.url import URL
 
