@@ -1,10 +1,10 @@
-from app import mysql
+from app import db
 
 
-class SignUp(mysql.Model):
+class SignUp(db.Model):
     __tablename__ = 'sign_up'
 
-    id = mysql.Column(mysql.String, primary_key=True)
-    email = mysql.Column(mysql.String)
-    password = mysql.Column(mysql.String)
-    user_id = mysql.Column(mysql.String)
+    id = db.Column(db.String, primary_key=True)
+    email = db.Column(db.String)
+    password = db.Column(db.String)
+    user_id = db.Column(db.String)

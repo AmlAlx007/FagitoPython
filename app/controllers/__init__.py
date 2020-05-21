@@ -1,10 +1,10 @@
 import os
 from flask import Blueprint, current_app
 
-from app.controllers.Register import signup
-from app.controllers.Register import login
+from app.controllers.Register import signup as signup
+from app.controllers.Register import login as login
 
 
-user_blueprints = Blueprint('register', 'api')
-user_blueprints.add_url_rule('/signup', view_func=signup(), methods=['POST'])
-user_blueprints.add_url_rule('/login', view_func=login(), methods=['GET'])
+user_blueprints = Blueprint('register', 'api', template_folder=None)
+user_blueprints.add_url_rule('/signup', view_func=signup, methods=['POST'])
+user_blueprints.add_url_rule('/login', view_func=login, methods=['GET'])
