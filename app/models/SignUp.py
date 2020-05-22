@@ -13,3 +13,10 @@ class SignUp(db.Model):
     def find_all(cls):
         return cls.query.all()
 
+    @classmethod
+    def order_data(cls):
+        return cls.query.group_by(cls.sign_up_id)
+
+    def commit_data(self):
+        db.session.add(self)
+        db.session.commit()
