@@ -5,6 +5,7 @@ from database import db
 
 def initialize_extensions():
     from app.models.SignUp import SignUp
+    from app.models.StudentMail import StudenMail
 
 
 def register_blueprints(application):
@@ -24,3 +25,4 @@ def create_app(config_filename=None):
 config_filename = os.path.abspath(os.path.dirname(__file__)) + "/../instance/development.cfg"
 app = Flask(__name__)
 app.config.from_pyfile(config_filename)
+

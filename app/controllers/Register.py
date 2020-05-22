@@ -1,10 +1,7 @@
 from flask import request
-from database import db
-from app import app
-from sqlalchemy import create_engine
-from sqlalchemy.engine.url import URL
 from app.models.SignUp import *
 from app.models.StudentMail import *
+from flask_jwt import jwt_required
 
 
 def signup():
