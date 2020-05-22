@@ -1,7 +1,8 @@
 from flask import request
 from app.models.SignUp import *
 from app.models.StudentMail import *
-from flask_jwt import jwt_required
+from security import authenticate
+from app.models.JwtEncoder import encode_auth_token
 
 
 def signup():
@@ -45,9 +46,10 @@ def signup():
 
 def login():
     request_data = request.get_json()
+    signup_object = authenticate(request_data['email'], request_data['password'])
+    token = encode_auth_token(signup_object.email)
 
-    result = SignUp.find_all()
-    for val in result:
+    '''for val in result:
         try:
             if val.email == request_data['email']:
                 if val.password == request_data['password']:
@@ -55,6 +57,6 @@ def login():
                 else:
                     raise Exception()
         except:
-            return {"message": "User credentials doesn't match !!!"}, 200
+            return {"message": "User credentials doesn't match !!!"}, 200'''
 
-    return {"message": "Account is not registered !!!"}, 200
+    return {"message": token}, 200

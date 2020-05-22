@@ -1,6 +1,7 @@
-from flask_jwt import jwt_required
+from flask import  request
+from app.models.JwtEncoder import decode_auth_token
 
 
-@jwt_required()
 def list_item():
-    return "<h1>Items Listed</h1>"
+    value = decode_auth_token(request.headers['Authorization'].split(" ")[1])
+    return value

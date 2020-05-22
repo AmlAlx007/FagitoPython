@@ -3,7 +3,6 @@ from werkzeug.security import safe_str_cmp
 
 
 def authenticate(username, password):
-    print("hhe")
     result = SignUp.find_all()
     for val in result:
         if safe_str_cmp(val.email, username):
