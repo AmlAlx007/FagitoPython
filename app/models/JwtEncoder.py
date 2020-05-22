@@ -21,12 +21,12 @@ def encode_auth_token(user_id):
 
 
 def decode_auth_token(auth_token):
-    try:
-        print(auth_token)
-        payload = jwt.decode(auth_token, app.config.get('SECRET_KEY'))
-        return payload['sub']
-    except jwt.ExpiredSignatureError:
+    #try:
+    payload = jwt.decode(auth_token, app.config.get('SECRET_KEY'))
+    print(payload)
+    return payload['sub']
+    '''except jwt.ExpiredSignatureError:
         return 'Signature expired. Please log in again.'
     except jwt.InvalidTokenError:
-        return 'Invalid token. Please log in again.'
+        return 'Invalid token. Please log in again.'''
 
